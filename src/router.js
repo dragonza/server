@@ -1,5 +1,5 @@
 import { signUp, signin } from "./controllers/authentication";
-import passportService from "./services/passport";
+import "./services/passport";
 import passport from "passport";
 
 const requireAuth = passport.authenticate("jwt", { session: false });

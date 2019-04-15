@@ -18,11 +18,11 @@ userSchema.pre('save', function(next) {
   const user = this;
 
   // generate a salt
-  bcrypt.genSalt(10, (err, salt) => {
-    if (err) return next(err);
+  bcrypt.genSalt(10, (error, salt) => {
+    if (error) return next(error);
 
     /// hash our password
-    bcrypt.hash(user.password, salt, null, (err, hash) => {
+    bcrypt.hash(user.password, salt, null, (error, hash) => {
       // over current password with encrypted one
       user.password = hash;
       next();
@@ -32,9 +32,9 @@ userSchema.pre('save', function(next) {
 // Create the model class
 
 userSchema.methods.comparePassword = function(candidatePassword, callback) {
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-    if (err) {
-      callback(err)
+  bcrypt.compare(candidatePassword, this.password, function(error, isMatch) {
+    if (error) {
+      callback(error)
     }
 
     callback(null, isMatch)

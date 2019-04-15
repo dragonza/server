@@ -19,18 +19,18 @@ export const signin = (req, res, next) => {
 export const signUp = (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    return res.status(422).send({ err: 'Email and password are required!'})
+    return res.status(422).send({ error: 'Email and password are required!'})
   }
 
   // check if a user email is existed
-  User.findOne({ email }, (err, existingUser) => {
-    if (err) { return next(err)}
+  User.findOne({ email }, (error, existingUser) => {
+    if (error) { return next(error)}
 
     // if it exists, return error
 
     if (existingUser) {
       return res.status(422).send({
-        err: 'Email is in use'
+        error: 'Email is in use'
       })
     }
 
@@ -40,8 +40,8 @@ export const signUp = (req, res, next) => {
       password,
     });
 
-    user.save((err) => {
-      if (err) return next(err);
+    user.save((error) => {
+      if (error) return next(error);
       // if not create and save user record
       res.json({ token: tokenForUse(user) });
 
