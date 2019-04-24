@@ -1,6 +1,6 @@
 import passport from "passport";
 import User from "../models/user";
-import config from "../config/dev";
+import config from "../config/keys";
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 import LocalStrategy from "passport-local";
 
