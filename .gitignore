@@ -1,7 +1,7 @@
 node_modules
 .idea
 .env
-src/config.js
+src/config/dev.js
 yarn-error.log
 build
 
