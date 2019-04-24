@@ -1,7 +1,9 @@
 import User from '../models/user';
 import jwt from 'jwt-simple';
 
-import config from '../config/dev';
+import config from '../config/keys';
+
+console.log('config', config.secret)
 
 function tokenForUse(user) {
   const timeStamp = new Date().getTime();
